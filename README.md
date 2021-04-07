@@ -6,6 +6,8 @@
 
 PRUEBA TÉCNICA SOFTWARE ENGINEER FRONT-END (REACT)
 
+You can see it here: [Pokedex](https://pokedex-ebon-chi.vercel.app/)
+
 ## The challenge
 
 The challenge is to integrate with the [The RESTful Pokémon API](https://pokeapi.co/) to pull Pokemon data and display it like in the designs.
