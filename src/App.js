@@ -1,11 +1,10 @@
 import './App.css';
+import Header from './molecules/Header';
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        Pokedex
-      </header>
+      <Header title={'Pokedex'}/>
     </div>
   );
 }
