@@ -1,9 +1,10 @@
 import { StyledPokemonView } from './StyledPokemonView';
+import Search from '../Search/Search';
 
 const PokemonView = () => {
   return (
     <StyledPokemonView className='PokemonView'>
-      Pokemon View
+      <Search />
     </StyledPokemonView>
   )
 }
