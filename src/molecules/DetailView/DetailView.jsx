@@ -1,9 +1,9 @@
 import { StyledDetailView } from './StyledDetailView';
 
-const DetailView = () => {
+const DetailView = ({ children }) => {
   return (
-    <StyledDetailView>
-      Detail View
+    <StyledDetailView className='DetailView'>
+      { children }
     </StyledDetailView>
   )
 }
