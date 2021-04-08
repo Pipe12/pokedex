@@ -6,10 +6,11 @@ import PokemonList from '../../layouts/PokemonList/PokemonList';
 
 const PokemonView = () => {
 
-  const url = 'https://pokeapi.co/api/v2/pokemon?offset=100&limit=100';
+  const url = 'https://pokeapi.co/api/v2/pokemon?offset=20&limit=20';
 
   const [pokemons, setPokemons] = useState([]);
-  const [loading, setLoading] = useState(true)
+  const [loading, setLoading] = useState(true);
+  const [detailPokemons, setDetailPokemons] = useState([]);
 
   const fetchPokemons = async () => {
     setLoading(true);
@@ -17,17 +18,39 @@ const PokemonView = () => {
       const response = await fetch(url);
       const pokemons = await response.json();
       setPokemons(pokemons);
-      setLoading(false);
     } catch (error) {
       console.error(error); 
     }
   }
 
+  const fetchDetailPokemon = async (pokeUrl) => {
+    try {
+      const response = await fetch(pokeUrl);
+      const detailPokemon = await response.json();
+      return detailPokemon;
+    } catch (error) {
+      console.error(error);
+    }
+  }
+  
   useEffect(() => {
-    fetchPokemons();
+    fetchPokemons()
   }, [])
 
-  console.log(pokemons.results);
+  useEffect(() => {
+    setLoading(true);
+    if (pokemons.length !== 0 ) {
+      const promes = pokemons.results.map(pokemon => fetchDetailPokemon(pokemon.url));
+      const retriveAll = async function() {
+        let results = await Promise.all(promes);
+        setDetailPokemons(results);
+        setLoading(false);
+      }
+      retriveAll();
+    }
+  }, [pokemons])
+  
+
 
   return (
     <StyledPokemonView className='PokemonView'>
@@ -36,15 +59,25 @@ const PokemonView = () => {
           {
             loading
               ? <Loading />
-              : pokemons.results.map((pokemon, index) => {
+              : detailPokemons.map((pokemon) => {
+                  const { 
+                    id, 
+                    name,
+                    sprites: {
+                      other: {
+                        dream_world: {
+                          front_default: image,
+                        },
+                      },
+                    }, 
+                  } = pokemon
+                  console.log(image);
                   return (
-                  <li key={index}>{pokemon.name}</li>
+                  <li key={id}>{`${name}, ID: ${id}`}</li>
                 )
             })
           }
         </PokemonList>
-      {/* <section className='wraper'>
-      </section> */}
     </StyledPokemonView>
   )
 }
