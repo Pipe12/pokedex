@@ -6,23 +6,24 @@ import PokemonView from '../molecules/PokemonView/PokemonView';
 import DetailView from '../molecules/DetailView/DetailView';
 import GottaCatchEmAll from '../molecules/GottaCatchEmAll/GottaCatchEmAll';
 import GlobalStyles from '../GlobalStyles';
+import PokemonDetail from '../molecules/PokemonDetail/PokemonDetail';
 
 function App() {
   return (
     <>
       <GlobalStyles />
-      <Skeleton className="App">
-        <Header title={'Pokedex'}/>
-        <PokemonView />
-        <DetailView>
-          <Router>
-            <Switch>
-              <Route exact path='/' component={GottaCatchEmAll} />
-            </Switch>
-          </Router>
-
-        </DetailView>
-      </Skeleton>
+      <Router>
+        <Skeleton className="App">
+          <Header title={'Pokedex'}/>
+          <PokemonView />
+            <DetailView>
+              <Switch>
+                <Route exact path='/' component={GottaCatchEmAll} />
+                <Route exact path='/pokemon/:name' component={PokemonDetail} />
+              </Switch>
+            </DetailView>
+        </Skeleton>
+      </Router>
     </>
   );
 }

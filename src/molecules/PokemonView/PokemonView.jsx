@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react';
+import { Link } from 'react-router-dom';
 import { StyledPokemonView } from './StyledPokemonView';
 import Search from '../Search/Search';
 import Loading from '../../atoms/Loading/Loading';
@@ -73,8 +74,14 @@ const PokemonView = () => {
                   } = pokemon
                   console.log(image);
                   return (
-                  <li key={id}>{`${name}, ID: ${id}`}</li>
-                )
+                    <Link
+                      to={`/pokemon/${name}`}
+                      className='Card__link'
+                      key={id}
+                    >
+                      <li>{`${name}, ID: ${id}`}</li>
+                    </Link>
+                  )
             })
           }
         </PokemonList>
