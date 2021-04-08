@@ -16,12 +16,12 @@ function App() {
         <Skeleton className="App">
           <Header title={'Pokedex'}/>
           <PokemonView />
-            <DetailView>
-              <Switch>
-                <Route exact path='/' component={GottaCatchEmAll} />
-                <Route exact path='/pokemon/:name' component={PokemonDetail} />
-              </Switch>
-            </DetailView>
+          <DetailView>
+            <Switch>
+              <Route exact path='/' component={GottaCatchEmAll} />
+              <Route exact path='/pokemon/:name' component={PokemonDetail} />
+            </Switch>
+          </DetailView>
         </Skeleton>
       </Router>
     </>
