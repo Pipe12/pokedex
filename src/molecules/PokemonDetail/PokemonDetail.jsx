@@ -3,6 +3,7 @@ import { useParams } from 'react-router-dom';
 import Loading from '../../atoms/Loading/Loading';
 import { StyledPokemonDetail } from './StyledPokemonDetail';
 import PokemonDetailImage from '../../atoms/PokemonDetailImage/PokemonDetailImage';
+import PokemonInfoDetail from '../../atoms/PokemonInfoDetail/PokemonInfoDetail';
 
 
 const PokemonDetail = () => {
@@ -34,6 +35,7 @@ const PokemonDetail = () => {
           ? <Loading />
           : <>
               <PokemonDetailImage pokemon={pokemon}/>
+              <PokemonInfoDetail pokemon={pokemon}/>
             </>
       }
     </StyledPokemonDetail>
