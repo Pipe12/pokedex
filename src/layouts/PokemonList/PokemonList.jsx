@@ -1,8 +1,11 @@
 import { StyledPokemonList } from './StyledPokemonList';
 
-const PokemonList = ({ children }) => {
+const PokemonList = ({ children, handleScroll }) => {
   return (
-    <StyledPokemonList className='PokemonList'>
+    <StyledPokemonList 
+      className='PokemonList'
+      onScroll={handleScroll}
+    >
       { children }
     </StyledPokemonList>
   )

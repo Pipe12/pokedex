@@ -7,16 +7,15 @@ import PokeCard from '../PokeCard/PokeCard';
 
 const PokemonView = () => {
 
-  const url = 'https://pokeapi.co/api/v2/pokemon?offset=20&limit=20';
-
+  const [currentUrl, setCurrentUrl] = useState('https://pokeapi.co/api/v2/pokemon?offset=0&limit=50');
   const [pokemons, setPokemons] = useState([]);
   const [loading, setLoading] = useState(true);
   const [detailPokemons, setDetailPokemons] = useState([]);
 
-  const fetchPokemons = async () => {
+  const fetchPokemons = async (currentUrl) => {
     setLoading(true);
     try {
-      const response = await fetch(url);
+      const response = await fetch(currentUrl);
       const pokemons = await response.json();
       setPokemons(pokemons);
     } catch (error) {
@@ -33,10 +32,22 @@ const PokemonView = () => {
       console.error(error);
     }
   }
+
+  const handleScroll = (event) => {
+    let element = event.target;
+    console.log(element.scrollTop);
+    console.log(element.scrollHeight);
+    if (element.scrollHeight - element.scrollTop === element.clientHeight) {
+      setCurrentUrl(pokemons.next);
+    }
+    if (element.scrollTop === 0) {
+      setCurrentUrl(pokemons.previous);
+    }
+  }
   
   useEffect(() => {
-    fetchPokemons()
-  }, [])
+    fetchPokemons(currentUrl)
+  }, [currentUrl]);
 
   useEffect(() => {
     setLoading(true);
@@ -49,14 +60,12 @@ const PokemonView = () => {
       }
       retriveAll();
     }
-  }, [pokemons])
-  
-
+  }, [pokemons]);
 
   return (
     <StyledPokemonView className='PokemonView'>
       <Search />
-        <PokemonList>
+        <PokemonList handleScroll={handleScroll}>
           {
             loading
               ? <Loading />
