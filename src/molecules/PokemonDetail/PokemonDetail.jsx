@@ -4,7 +4,7 @@ const PokemonDetail = () => {
   const { name } = useParams();
 
   return (
-    <div>
+    <div className='PokemonDetail'>
       <h1>{ name }</h1>
     </div>
   )

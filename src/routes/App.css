@@ -1,1 +1,14 @@
 @import url('https://fonts.googleapis.com/css2?family=Nunito+Sans:ital,wght@0,600;0,800;1,300&display=swap');
+
+.Card__link {
+  border: 1px solid rebeccapurple;
+  color: var(--text);
+  background-color: var(--background-element);
+  text-decoration: none;
+  border-radius: 5px;
+  box-shadow: 0px 2px 10px 0px var(--shadow);
+}
+
+.Card__link li {
+  width: fit-content;
+}

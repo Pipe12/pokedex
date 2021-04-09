@@ -4,6 +4,7 @@ import { StyledPokemonView } from './StyledPokemonView';
 import Search from '../Search/Search';
 import Loading from '../../atoms/Loading/Loading';
 import PokemonList from '../../layouts/PokemonList/PokemonList';
+import PokeCard from '../PokeCard/PokeCard';
 
 const PokemonView = () => {
 
@@ -61,25 +62,16 @@ const PokemonView = () => {
             loading
               ? <Loading />
               : detailPokemons.map((pokemon) => {
-                  const { 
-                    id, 
-                    name,
-                    sprites: {
-                      other: {
-                        dream_world: {
-                          front_default: image,
-                        },
-                      },
-                    }, 
-                  } = pokemon
-                  console.log(image);
+                  const { id, name} = pokemon;
                   return (
                     <Link
                       to={`/pokemon/${name}`}
                       className='Card__link'
                       key={id}
                     >
-                      <li>{`${name}, ID: ${id}`}</li>
+                      <li>
+                        <PokeCard pokemon={pokemon}/>
+                      </li>
                     </Link>
                   )
             })
