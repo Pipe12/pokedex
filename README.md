@@ -14,14 +14,22 @@ The challenge is to integrate with the [The RESTful Pokémon API](https://pokeap
 
 Users should be able to:
 
-- [] List all Pokémon
-- [] View a Pokémon detailed info (Image, id, name, type, abilities)
-- [] Search for a specific Pokémon (this feature is not established on the wire frame but find the best location to place it).
-- [] pagination or Infinite Scroll preferred
+- [x] List all Pokémon
+- [x] View a Pokémon detailed info (Image, id, name, type, abilities)
+- [ ] Search for a specific Pokémon (this feature is not established on the wire frame but find the best location to place it).
+- [ ] pagination or Infinite Scroll preferred
 
 EXTRA POINTS
 
-- [] Redux, redux-saga
-- [] Git Repository
-- [] React Hooks
-- [] Microfront architecture (https://single-spa.js.org/)
+- [ ] Redux, redux-saga
+- [x] Git Repository
+- [ ] React Hooks
+- [x] Microfront architecture (https://single-spa.js.org/)
+
+## Design
+
+![Screenshot from Figma](./design/desktop_design.png)
+
+## Screenshot
+
+![Screenshot from Browser](./design/desktop_screenshot.png)
