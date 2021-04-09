@@ -35,13 +35,15 @@ const PokemonView = () => {
 
   const handleScroll = (event) => {
     let element = event.target;
-    console.log(element.scrollTop);
-    console.log(element.scrollHeight);
     if (element.scrollHeight - element.scrollTop === element.clientHeight) {
-      setCurrentUrl(pokemons.next);
+      if(pokemons.next !== null) {
+        setCurrentUrl(pokemons.next);
+      }
     }
     if (element.scrollTop === 0) {
-      setCurrentUrl(pokemons.previous);
+      if(pokemons.previous !== null) {
+        setCurrentUrl(pokemons.previous);
+      }
     }
   }
   

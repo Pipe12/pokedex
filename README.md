@@ -17,7 +17,7 @@ Users should be able to:
 - [x] List all Pokémon
 - [x] View a Pokémon detailed info (Image, id, name, type, abilities)
 - [ ] Search for a specific Pokémon (this feature is not established on the wire frame but find the best location to place it).
-- [ ] pagination or Infinite Scroll preferred
+- [x] pagination or Infinite Scroll preferred
 
 EXTRA POINTS
 
