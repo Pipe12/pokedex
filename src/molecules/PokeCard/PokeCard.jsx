@@ -3,7 +3,7 @@ import PokemonImageCard from '../../atoms/PokemonImageCard/PokemonImageCard';
 import PokemonInfoCard from '../../atoms/PokemonInfoCard/PokemonInfoCard';
 
 const PokeCard = ({ pokemon }) => {
-    const { 
+  const { 
     id, 
     name,
     sprites: {
