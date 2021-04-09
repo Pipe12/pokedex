@@ -1,6 +1,5 @@
 import { useState, useEffect } from 'react';
-import { Link } from 'react-router-dom';
-import { StyledPokemonView } from './StyledPokemonView';
+import { StyledPokemonView, StyledLink } from './StyledPokemonView';
 import Search from '../Search/Search';
 import Loading from '../../atoms/Loading/Loading';
 import PokemonList from '../../layouts/PokemonList/PokemonList';
@@ -64,7 +63,7 @@ const PokemonView = () => {
               : detailPokemons.map((pokemon) => {
                   const { id, name} = pokemon;
                   return (
-                    <Link
+                    <StyledLink
                       to={`/pokemon/${name}`}
                       className='Card__link'
                       key={id}
@@ -72,7 +71,7 @@ const PokemonView = () => {
                       <li>
                         <PokeCard pokemon={pokemon}/>
                       </li>
-                    </Link>
+                    </StyledLink>
                   )
             })
           }

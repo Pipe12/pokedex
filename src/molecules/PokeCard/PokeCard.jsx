@@ -1,3 +1,7 @@
+import { StyledPokeCard } from './StyledPokeCard';
+import PokemonImageCard from '../../atoms/PokemonImageCard/PokemonImageCard';
+import PokemonInfoCard from '../../atoms/PokemonInfoCard/PokemonInfoCard';
+
 const PokeCard = ({ pokemon }) => {
     const { 
     id, 
@@ -11,15 +15,10 @@ const PokeCard = ({ pokemon }) => {
     }, 
   } = pokemon
   return (
-    <div className='PokeCard'>
-      <figure>
-        <img src={imageUrl} alt={`Img of ${name}`}/>
-      </figure>
-      <div>
-        <p>{id}</p>
-        <p>{name}</p>
-      </div>
-    </div>
+    <StyledPokeCard className='PokeCard'>
+      <PokemonImageCard name={name} imageUrl={imageUrl} />
+      <PokemonInfoCard name={name} id={id} />
+    </StyledPokeCard>
   )
 }
 
