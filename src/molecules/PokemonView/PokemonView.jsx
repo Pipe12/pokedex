@@ -11,7 +11,6 @@ const PokemonView = () => {
   const [pokemons, setPokemons] = useState([]);
   const [loading, setLoading] = useState(true);
   const [detailPokemons, setDetailPokemons] = useState([]);
-  const [pokemonsToShow, setPokemonsToShow] = useState([]);
 
   const fetchPokemons = async (currentUrl) => {
     setLoading(true);
@@ -58,11 +57,6 @@ const PokemonView = () => {
     }
   }, [pokemons]);
 
-  useEffect(() => {
-    setPokemonsToShow([...pokemonsToShow, ...detailPokemons])
-  }, [detailPokemons])
-
-  console.log(pokemonsToShow);
   return (
     <StyledPokemonView className='PokemonView'>
       <Search />
@@ -70,7 +64,7 @@ const PokemonView = () => {
           {
             loading
               ? <Loading />
-              : pokemonsToShow.map((pokemon) => {
+              : detailPokemons.map((pokemon) => {
                   const { id, name} = pokemon;
                   return (
                     <StyledLink
