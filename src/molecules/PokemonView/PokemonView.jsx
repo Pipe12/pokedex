@@ -11,6 +11,7 @@ const PokemonView = () => {
   const [pokemons, setPokemons] = useState([]);
   const [loading, setLoading] = useState(true);
   const [detailPokemons, setDetailPokemons] = useState([]);
+  const [pokemonsToShow, setPokemonsToShow] = useState([]);
 
   const fetchPokemons = async (currentUrl) => {
     setLoading(true);
@@ -36,14 +37,7 @@ const PokemonView = () => {
   const handleScroll = (event) => {
     let element = event.target;
     if (element.scrollHeight - element.scrollTop === element.clientHeight) {
-      if(pokemons.next !== null) {
-        setCurrentUrl(pokemons.next);
-      }
-    }
-    if (element.scrollTop === 0) {
-      if(pokemons.previous !== null) {
-        setCurrentUrl(pokemons.previous);
-      }
+      setCurrentUrl(pokemons.next);
     }
   }
   
@@ -64,6 +58,11 @@ const PokemonView = () => {
     }
   }, [pokemons]);
 
+  useEffect(() => {
+    setPokemonsToShow([...pokemonsToShow, ...detailPokemons])
+  }, [detailPokemons])
+
+  console.log(pokemonsToShow);
   return (
     <StyledPokemonView className='PokemonView'>
       <Search />
@@ -71,7 +70,7 @@ const PokemonView = () => {
           {
             loading
               ? <Loading />
-              : detailPokemons.map((pokemon) => {
+              : pokemonsToShow.map((pokemon) => {
                   const { id, name} = pokemon;
                   return (
                     <StyledLink
